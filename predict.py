@@ -33,15 +33,11 @@ class Predictor(BasePredictor):
         print("Loading pipeline...")
 
         self.model = AutoModelForImageClassification.from_pretrained(
-            MODEL,
-            cache_dir=MODEL_CACHE,
-            local_files_only=True,
+            MODEL, cache_dir=MODEL_CACHE, local_files_only=True,
         ).to(device)
 
         self.transforms = AutoImageProcessor.from_pretrained(
-            MODEL, 
-            cache_dir=MODEL_CACHE,
-            local_files_only=True,
+            MODEL, cache_dir=MODEL_CACHE, local_files_only=True,
             use_fast=True
             ).to(device)
 

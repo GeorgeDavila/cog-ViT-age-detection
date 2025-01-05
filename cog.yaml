@@ -1,0 +1,24 @@
+# Configuration for Cog
+build:
+  gpu: true
+  python_version: "3.11"
+  python_packages:
+    - "numpy==1.26.4"
+    - "requests==2.32.3"
+    - "torch==2.0.0"
+    - "diffusers==0.22.1"
+    - "transformers==4.35.0"
+    - "accelerate==0.24.1"
+    - "einops==0.7.0"
+    - "torchvision"
+    - "safetensors"
+    - "pandas"
+    - "matplotlib"
+
+  run:
+    - apt-get update && apt-get install -y git-lfs
+    - git lfs install
+    - mkdir model-cache && cd model-cache && git clone https://huggingface.co/nateraw/vit-age-classifier
+
+# predict.py defines how predictions are run on your model
+predict: "predict.py:Predictor"
